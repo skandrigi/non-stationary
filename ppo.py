@@ -144,6 +144,7 @@ class Agent(nn.Module):
     def get_value(self, x):
         return self.critic(x)
     def get_action(self, x, deterministic=False):
+        x = x[:, :42]
         action_mean = self.actor_mean(x)
         if deterministic:
             return action_mean
